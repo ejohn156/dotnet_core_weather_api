@@ -10,22 +10,26 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-
+using Microsoft.EntityFrameworkCore;
+using Npgsql.EntityFrameworkCore.PostgreSQL;
+using dotnet_core_weather_api.Data.Entities;
 namespace dotnet_core_weather_api
 {
     public class Startup
     {
+        private readonly IConfiguration _config;
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            _config = configuration;
         }
 
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddDbContext<dotnet_core_weather_api.Data.WeatherAppContext>(cfg => { cfg.UseNpgsql(_config.GetConnectionString("WeatherAppConnectionString")); });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

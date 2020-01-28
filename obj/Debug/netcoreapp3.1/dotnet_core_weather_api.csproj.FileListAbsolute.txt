@@ -16,3 +16,5 @@
 /Users/ericjohnson/Desktop/personal_projects/dotnet_core_weather_api/obj/Debug/netcoreapp3.1/dotnet_core_weather_api.RazorTargetAssemblyInfo.cache
 /Users/ericjohnson/Desktop/personal_projects/dotnet_core_weather_api/obj/Debug/netcoreapp3.1/dotnet_core_weather_api.dll
 /Users/ericjohnson/Desktop/personal_projects/dotnet_core_weather_api/obj/Debug/netcoreapp3.1/dotnet_core_weather_api.pdb
+/Users/ericjohnson/Desktop/personal_projects/dotnet_core_weather_api/bin/Debug/netcoreapp3.1/Newtonsoft.Json.dll
+/Users/ericjohnson/Desktop/personal_projects/dotnet_core_weather_api/obj/Debug/netcoreapp3.1/dotnet_core_weather_api.csproj.CopyComplete

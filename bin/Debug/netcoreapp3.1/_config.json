@@ -1,5 +1,8 @@
 {
     "ConnectionStrings" : {
     "WeatherAppConnectionString" : "Server=localhost;Port=5433;Database=WeatherApp_db;User Id=postgres;Password=petro3519;"
+    },
+    "ApiKeys" : {
+        "weatherAPIKey" : "edd8a536615baec9136dec2c86cdb211"
     }
 }

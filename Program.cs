@@ -28,7 +28,7 @@ namespace dotnet_core_weather_api
             builder.Sources.Clear();
 
             builder.AddJsonFile("_config.json", false, true)
-            .AddEnvironmentVariables();
+            .AddEnvironmentVariables(".env");
         }
     }
 }

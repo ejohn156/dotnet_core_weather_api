@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using System.Net.Http;
 
 namespace dotnet_core_weather_api.Controllers
 {
@@ -20,14 +21,19 @@ namespace dotnet_core_weather_api.Controllers
         }
 
         [HttpGet("{city}")]
-        public IActionResult Get(String city)
+        public  async Task<IActionResult> Get(String city)
         {
+            var client = new HttpClient();
+            var getCurrentWeatherUrl = "http://api.openweathermap.org/data/2.5/weather?q="+city+"&APPID=";
             try{
-                return Ok("Returns weather for " + city);
+                HttpResponseMessage response = await client.GetAsync(getCurrentWeatherUrl);
+                var result = JsonConvert.DeserializeObject(response.Content.ReadAsStringAsync().Result);
+                return Ok(result);
             }
             catch{
-                _logger.LogError("unable to find weather for given city");
-                return BadRequest("unable to find weather for given city");
+                HttpResponseMessage response = await client.GetAsync(getCurrentWeatherUrl);
+             
+                return BadRequest(response);
             }
             
         }
@@ -42,17 +48,22 @@ namespace dotnet_core_weather_api.Controllers
         public ForecastController(ILogger<ForecastController> logger)
         {
             _logger = logger;
+
         }
 
         [HttpGet("{city}")]
-        public IActionResult Get(String city)
+        public async Task<IActionResult> Get(String city)
         {
+            var client = new HttpClient();
+            var getWeatherForecastUrl = "http://api.openweathermap.org/data/2.5/forecast/daily?q="+city+"&mode=json&units=imperial&cnt=7&APPID=";
             try{
-                return Ok("Returns forecast for " + city);
+                HttpResponseMessage response = await client.GetAsync(getWeatherForecastUrl);
+                return Ok(response.Content);
             }
             catch{
-                _logger.LogError("unable to find forecast for given city");
-                return BadRequest("unable to find forecast for given city");
+                HttpResponseMessage response = await client.GetAsync(getWeatherForecastUrl);
+             
+                return BadRequest(response);
             }
            
         }

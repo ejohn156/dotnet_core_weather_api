@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace dotnet_core_weather_api.Controllers
 {
@@ -11,11 +12,6 @@ namespace dotnet_core_weather_api.Controllers
     [Route("/api/weather")]
     public class WeatherController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
         private readonly ILogger<WeatherController> _logger;
 
         public WeatherController(ILogger<WeatherController> logger)
@@ -23,17 +19,42 @@ namespace dotnet_core_weather_api.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
-        public IEnumerable<Weather> Get()
+        [HttpGet("{city}")]
+        public IActionResult Get(String city)
         {
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new Weather
-            {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            })
-            .ToArray();
+            try{
+                return Ok("Returns weather for " + city);
+            }
+            catch{
+                _logger.LogError("unable to find weather for given city");
+                return BadRequest("unable to find weather for given city");
+            }
+            
+        }
+    }
+
+    [Route("/api/Forecast")]
+    public class ForecastController : ControllerBase
+    {
+
+        private readonly ILogger<ForecastController> _logger;
+
+        public ForecastController(ILogger<ForecastController> logger)
+        {
+            _logger = logger;
+        }
+
+        [HttpGet("{city}")]
+        public IActionResult Get(String city)
+        {
+            try{
+                return Ok("Returns forecast for " + city);
+            }
+            catch{
+                _logger.LogError("unable to find forecast for given city");
+                return BadRequest("unable to find forecast for given city");
+            }
+           
         }
     }
 }

@@ -1,0 +1,5 @@
+{
+    "ConnectionStrings" : {
+    "WeatherAppConnectionString" : "Server=localhost;Port=5433;Database=WeatherApp_db;User Id=postgres;Password=petro3519;"
+    }
+}

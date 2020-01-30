@@ -12,7 +12,7 @@ namespace dotnet_core_weather_api.Data
         void createFavorite(Favorite newFavorite);
         void deleteFavorite(int ID);
         IEnumerable<Favorite> getAllfavorites();
-        List<string> getUsersWhoFavoritedCity(string city);
+        List<int> getUsersWhoFavoritedCity(string city);
         bool SaveAll();
         bool SaveChanges();
     }
@@ -32,9 +32,9 @@ namespace dotnet_core_weather_api.Data
             .ToList();
         }
 
-        public List<String> getUsersWhoFavoritedCity(string city)
+        public List<int> getUsersWhoFavoritedCity(string city)
         {
-            var ListOfUsers = new List<String>();
+            var ListOfUsers = new List<int>();
             var result = _favorites.Favorites.Where(I => I.City == city).ToList();
             foreach (Favorite fav in result)
             {

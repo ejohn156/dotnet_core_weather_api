@@ -7,7 +7,7 @@ namespace dotnet_core_weather_api.Data.Entities
   {
     public int ID {get; set;}
     public String City { get; set; }
-    public String User { get; set; }
+    public int User { get; set; }
 
   }
 }

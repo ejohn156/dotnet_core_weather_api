@@ -21,19 +21,19 @@ namespace dotnet_core_weather_api.Controllers
             _favorites = favorites;
         }
         [HttpGet]
-        public IEnumerable<Favorite> getUsersFavorites (){
+        public IEnumerable<Favorite> getAllFavorites (){
             return _favorites.getAllfavorites();
         }
-        [HttpPost("/create/{Favorite}")]
+        [HttpPost("/create")]
         public void CreateFavorite ([FromBody]Favorite newFavorite){
           _favorites.createFavorite(newFavorite);
         }
         [HttpPost("/delete/{Favorite}")]
-        public void DeleteFavorite ([FromBody]int ID){
+        public void DeleteFavorite (int ID){
             _favorites.deleteFavorite(ID);
         }
         [HttpGet("/{City}")]
-        public List<int> listOfUsersWhoFavorited ([FromBody]string city){
+        public List<int> listOfUsersWhoFavorited (string city){
             List<int> userIds = _favorites.getUsersWhoFavoritedCity(city);
             return userIds;
         }

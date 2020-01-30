@@ -24,16 +24,14 @@ namespace dotnet_core_weather_api.Controllers
         public  async Task<IActionResult> Get(String city)
         {
             var client = new HttpClient();
-            var getCurrentWeatherUrl = "http://api.openweathermap.org/data/2.5/weather?q="+city+"&APPID=";
+            var getCurrentWeatherUrl = "http://api.openweathermap.org/data/2.5/weather?q="+city+"&APPID=edd8a536615baec9136dec2c86cdb211";
             try{
                 HttpResponseMessage response = await client.GetAsync(getCurrentWeatherUrl);
-                var result = JsonConvert.DeserializeObject(response.Content.ReadAsStringAsync().Result);
-                return Ok(result);
+                return Ok(response.Content.ReadAsStringAsync().Result);
             }
             catch{
-                HttpResponseMessage response = await client.GetAsync(getCurrentWeatherUrl);
-             
-                return BadRequest(response);
+
+                return BadRequest("API call failed");
             }
             
         }
@@ -55,15 +53,14 @@ namespace dotnet_core_weather_api.Controllers
         public async Task<IActionResult> Get(String city)
         {
             var client = new HttpClient();
-            var getWeatherForecastUrl = "http://api.openweathermap.org/data/2.5/forecast/daily?q="+city+"&mode=json&units=imperial&cnt=7&APPID=";
+            var getWeatherForecastUrl = "http://api.openweathermap.org/data/2.5/forecast?q="+city+"&mode=json&units=imperial&cnt=7&APPID=edd8a536615baec9136dec2c86cdb211";
             try{
                 HttpResponseMessage response = await client.GetAsync(getWeatherForecastUrl);
-                return Ok(response.Content);
+                return Ok(response.Content.ReadAsStringAsync().Result);
             }
             catch{
-                HttpResponseMessage response = await client.GetAsync(getWeatherForecastUrl);
              
-                return BadRequest(response);
+                return BadRequest("Api call failed");
             }
            
         }

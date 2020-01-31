@@ -7,7 +7,7 @@ using dotnet_core_weather_api.Data.Entities;
 using dotnet_core_weather_api.Data;
 namespace dotnet_core_weather_api.Data
 {
-    public interface IfavoritesRepository
+    public interface IFavoritesRepository
     {
         void createFavorite(Favorite newFavorite);
         void deleteFavorite(int ID);
@@ -17,7 +17,7 @@ namespace dotnet_core_weather_api.Data
         bool SaveChanges();
     }
 
-    public class favoritesRepository : IfavoritesRepository
+    public class favoritesRepository : IFavoritesRepository
     {
         private readonly WeatherAppContext _favorites;
 

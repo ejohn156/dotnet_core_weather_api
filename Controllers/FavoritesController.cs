@@ -15,24 +15,24 @@ namespace dotnet_core_weather_api.Controllers
     [Route("api/favorite")]
     public class FavoritesController : ControllerBase
     {
-        private readonly IfavoritesRepository _favorites;
+        private readonly IFavoritesRepository _favorites;
 
-        public FavoritesController(IfavoritesRepository favorites){
+        public FavoritesController(IFavoritesRepository favorites){
             _favorites = favorites;
         }
         [HttpGet]
         public IEnumerable<Favorite> getAllFavorites (){
             return _favorites.getAllfavorites();
         }
-        [HttpPost("/create")]
+        [HttpPost("create")]
         public void CreateFavorite ([FromBody]Favorite newFavorite){
           _favorites.createFavorite(newFavorite);
         }
-        [HttpPost("/delete/{Favorite}")]
+        [HttpPost("delete/{Favorite}")]
         public void DeleteFavorite (int ID){
             _favorites.deleteFavorite(ID);
         }
-        [HttpGet("/{City}")]
+        [HttpGet("{City}")]
         public List<int> listOfUsersWhoFavorited (string city){
             List<int> userIds = _favorites.getUsersWhoFavoritedCity(city);
             return userIds;

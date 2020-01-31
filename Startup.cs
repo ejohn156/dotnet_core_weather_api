@@ -15,6 +15,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL;
 using dotnet_core_weather_api.Data.Entities;
 using dotnet_core_weather_api.Controllers;
 using System.Net.Http;
+using dotnet_core_weather_api.Data;
 namespace dotnet_core_weather_api
 {
     
@@ -34,6 +35,8 @@ namespace dotnet_core_weather_api
             services.AddControllers();
             services.AddDbContext<dotnet_core_weather_api.Data.WeatherAppContext>(cfg => { cfg.UseNpgsql(_config.GetConnectionString("WeatherAppConnectionString")); });
             services.AddHttpClient();
+            services.AddScoped<IFavoritesRepository, favoritesRepository>();
+            services.AddScoped<IUsersRepository, UsersRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -16,6 +16,18 @@ namespace dotnet_core_weather_api.Data
         }        
         public DbSet<Favorite> Favorites{get; set;}
         public DbSet<User> Users{get; set;}
-        
-    } 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Favorite>()
+                .HasOne(s => s.User);
+
+            modelBuilder.Entity<User>()
+                .HasMany(s => s.Favorites);
+        }
+    }
+    
 }

@@ -38,7 +38,7 @@ namespace dotnet_core_weather_api.Data
             var result = _favorites.Favorites.Where(I => I.City == city).ToList();
             foreach (Favorite fav in result)
             {
-                ListOfUsers.Add(fav.User);
+                ListOfUsers.Add(fav.UserID);
             }
             return ListOfUsers;
         }

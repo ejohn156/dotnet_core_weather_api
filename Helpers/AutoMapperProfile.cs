@@ -10,6 +10,7 @@ namespace dotnet_core_weather_api.Helpers
         public AutoMapperProfile()
         {
             CreateMap<CreateUser, User>();
+            CreateMap<CreateFavorite, Favorite>();
         }
 
     }

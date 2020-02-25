@@ -8,6 +8,8 @@ using Newtonsoft.Json;
 using System.Net.Http;
 using dotnet_core_weather_api.Data;
 using dotnet_core_weather_api.Data.Entities;
+using AutoMapper;
+using dotnet_core_weather_api.Models;
 
 namespace dotnet_core_weather_api.Controllers
 {
@@ -16,17 +18,20 @@ namespace dotnet_core_weather_api.Controllers
     public class FavoritesController : ControllerBase
     {
         private readonly IFavoritesRepository _favorites;
+        private readonly IMapper _mapper;
 
-        public FavoritesController(IFavoritesRepository favorites){
+        public FavoritesController(IFavoritesRepository favorites, IMapper mapper){
             _favorites = favorites;
+            _mapper = mapper;
         }
         [HttpGet]
         public IEnumerable<Favorite> getAllFavorites (){
             return _favorites.getAllfavorites();
         }
         [HttpPost("create")]
-        public void CreateFavorite ([FromBody]Favorite newFavorite){
-          _favorites.createFavorite(newFavorite);
+        public void CreateFavorite ([FromBody]CreateFavorite newFavorite){
+            var favorite = _mapper.Map<Favorite>(newFavorite);
+          _favorites.createFavorite(favorite);
         }
         [HttpPost("delete/{Favorite}")]
         public void DeleteFavorite (int ID){

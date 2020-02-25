@@ -16,6 +16,9 @@ using dotnet_core_weather_api.Data.Entities;
 using dotnet_core_weather_api.Controllers;
 using System.Net.Http;
 using dotnet_core_weather_api.Data;
+using AutoMapper;
+using dotnet_core_weather_api.Helpers;
+
 namespace dotnet_core_weather_api
 {
     
@@ -32,6 +35,15 @@ namespace dotnet_core_weather_api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new AutoMapperProfile());
+            });
+
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
             services.AddControllers();
             services.AddDbContext<dotnet_core_weather_api.Data.WeatherAppContext>(cfg => { cfg.UseNpgsql(_config.GetConnectionString("WeatherAppConnectionString")); });
             services.AddHttpClient();

@@ -2,7 +2,7 @@
 
 namespace dotnet_core_weather_api.Migrations
 {
-    public partial class secondMigration : Migration
+    public partial class alterringfavoritetable : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

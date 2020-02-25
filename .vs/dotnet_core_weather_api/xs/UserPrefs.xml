@@ -1,0 +1,35 @@
+﻿<Properties StartupConfiguration="{27FA5A45-CEBF-4661-B155-607EE5A55B61}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Models/CreateUser.cs">
+    <Files>
+      <File FileName="Data/UsersRepository.cs" Line="12" Column="25" />
+      <File FileName="Data/WeatherAppContext.cs" Line="1" Column="1" />
+      <File FileName="Helpers/AutoMapperProfile.cs" Line="11" Column="10" />
+      <File FileName="Startup.cs" Line="43" Column="1" />
+      <File FileName="Controllers/UsersController.cs" Line="29" Column="40" />
+      <File FileName="Models/CreateUser.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="dotnet_core_weather_api" expanded="True">
+            <Node name="dotnet_core_weather_api" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Data" expanded="True" />
+              <Node name="Helpers" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="CreateUser.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.dotnet__core__weather__api PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

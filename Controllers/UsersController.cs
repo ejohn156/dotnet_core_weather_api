@@ -8,6 +8,8 @@ using Newtonsoft.Json;
 using System.Net.Http;
 using dotnet_core_weather_api.Data;
 using dotnet_core_weather_api.Data.Entities;
+using dotnet_core_weather_api.Models;
+using AutoMapper;
 
 namespace dotnet_core_weather_api.Controllers
 {
@@ -16,9 +18,11 @@ namespace dotnet_core_weather_api.Controllers
     public class UsersController : ControllerBase
     {
         private readonly IUsersRepository _users;
+        private readonly IMapper _mapper;
 
-        public UsersController(IUsersRepository users){
+        public UsersController(IUsersRepository users, IMapper mapper){
             _users = users;
+            _mapper = mapper;
         }
         
         [HttpGet]
@@ -26,8 +30,9 @@ namespace dotnet_core_weather_api.Controllers
             return _users.getAllUsers();
         }
         [HttpPost("create")]
-        public void CreateUser ([FromBody]User newUser){
-          _users.createUser(newUser);
+        public void CreateUser ([FromBody]CreateUser newUser){
+            var user = _mapper.Map<User>(newUser);
+          _users.createUser(user);
         }
         [HttpPost("delete/{User}")]
         public void DeleteUser (int ID){

@@ -10,8 +10,8 @@ using dotnet_core_weather_api.Data;
 namespace dotnet_core_weather_api.Migrations
 {
     [DbContext(typeof(WeatherAppContext))]
-    [Migration("20200128193241_secondMigration")]
-    partial class secondMigration
+    [Migration("20200205203147_alterring favorite table")]
+    partial class alterringfavoritetable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,8 +31,8 @@ namespace dotnet_core_weather_api.Migrations
                     b.Property<string>("City")
                         .HasColumnType("text");
 
-                    b.Property<string>("User")
-                        .HasColumnType("text");
+                    b.Property<int>("User")
+                        .HasColumnType("integer");
 
                     b.Property<int?>("UserID")
                         .HasColumnType("integer");

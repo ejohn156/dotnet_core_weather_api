@@ -29,8 +29,8 @@ namespace dotnet_core_weather_api.Migrations
                     b.Property<string>("City")
                         .HasColumnType("text");
 
-                    b.Property<string>("User")
-                        .HasColumnType("text");
+                    b.Property<int>("User")
+                        .HasColumnType("integer");
 
                     b.Property<int?>("UserID")
                         .HasColumnType("integer");

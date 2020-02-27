@@ -43,9 +43,9 @@ namespace dotnet_core_weather_api.Controllers
             _users.UpdateUser(user);
         }
         [HttpGet("{Id}")]
-        public User getUser (int Id){
+        public async Task<User> getUser (int Id){
             
-            return _users.getUser(Id);
+            return await _users.getUser(Id);
         }
     }
 }

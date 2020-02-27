@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using dotnet_core_weather_api.Data.Entities;
 using dotnet_core_weather_api.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace dotnet_core_weather_api.Data
 {
     public interface IUsersRepository
@@ -12,7 +14,7 @@ namespace dotnet_core_weather_api.Data
         void createUser(User newUser);
         void deleteUser(int ID);
         IEnumerable<User> getAllUsers();
-        User getUser(int ID);
+        Task<User> getUser(int ID);
         bool SaveAll();
         bool SaveChanges();
         void UpdateUser(User updatedUser);
@@ -33,10 +35,10 @@ namespace dotnet_core_weather_api.Data
             .ToList();
         }
 
-        public User getUser(int ID)
+        public async Task<User> getUser(int ID)
         {
 
-            var result = _userContext.Users.Where(I => I.ID == ID);
+            var result = await _userContext.Users.Where(I => I.ID == ID).ToListAsync();
             return result.First();
         }
         public void createUser(User newUser)

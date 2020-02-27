@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using dotnet_core_weather_api.Data.Entities;
 using dotnet_core_weather_api.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace dotnet_core_weather_api.Data
 {
     public interface IFavoritesRepository
@@ -44,13 +46,17 @@ namespace dotnet_core_weather_api.Data
         }
         public void createFavorite(Favorite newFavorite)
         {
+            var existingFavorites = _favorites.Favorites.Where(I => I.UserID == newFavorite.UserID).Where(I => I.City.Equals(newFavorite.City)).ToArray();
+            if (existingFavorites.Length == 0)
+            {
+                _favorites.Favorites.Add(newFavorite);
+                _favorites.SaveChanges();
+            }
 
-            _favorites.Favorites.Add(newFavorite);
-            _favorites.SaveChanges();
         }
         public void deleteFavorite(int ID)
         {
-            Favorite favoriteToDelete = _favorites.Favorites.ToList().Where(I => I.ID == ID).First();
+            Favorite favoriteToDelete = _favorites.Favorites.FirstOrDefault(I => I.ID == ID);
 
             _favorites.Remove(favoriteToDelete);
             _favorites.SaveChanges();

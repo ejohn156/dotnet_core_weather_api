@@ -1,18 +1,19 @@
 ﻿<Properties StartupConfiguration="{27FA5A45-CEBF-4661-B155-607EE5A55B61}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Models/CreateFavorite.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument=".gitignore">
     <Files>
-      <File FileName="Controllers/UsersController.cs" Line="18" Column="35" />
+      <File FileName="Controllers/UsersController.cs" Line="104" Column="34" />
       <File FileName="Data/Entities/User.cs" />
       <File FileName="Data/FavoritesRepository.cs" Line="50" Column="45" />
-      <File FileName="Controllers/FavoritesController.cs" Line="60" Column="1" />
-      <File FileName="Data/UsersRepository.cs" />
+      <File FileName="Controllers/FavoritesController.cs" Line="58" Column="14" />
+      <File FileName="Data/UsersRepository.cs" Line="69" Column="76" />
       <File FileName="Data/WeatherAppContext.cs" Line="30" Column="1" />
       <File FileName="Helpers/AppException.cs" Line="17" Column="10" />
       <File FileName="Models/CreateFavorite.cs" Line="1" Column="1" />
-      <File FileName="Controllers/WeatherForecastController.cs" Line="40" Column="29" />
-      <File FileName="Models/Forecast.cs" Line="1" Column="1" />
-      <File FileName="Models/Weather.cs" Line="11" Column="6" />
+      <File FileName="Controllers/WeatherForecastController.cs" Line="49" Column="30" />
+      <File FileName="Models/Forecast.cs" Line="5" Column="5" />
+      <File FileName="Models/Weather.cs" Line="5" Column="5" />
       <File FileName="Models/CreateUser.cs" Line="1" Column="1" />
+      <File FileName=".gitignore" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -22,9 +23,8 @@
               <Node name="Controllers" expanded="True" />
               <Node name="Data" expanded="True" />
               <Node name="Migrations" expanded="True" />
-              <Node name="Models" expanded="True">
-                <Node name="CreateFavorite.cs" selected="True" />
-              </Node>
+              <Node name="Models" expanded="True" />
+              <Node name=".gitignore" selected="True" />
             </Node>
           </Node>
         </State>

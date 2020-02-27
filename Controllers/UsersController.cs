@@ -10,6 +10,7 @@ using dotnet_core_weather_api.Data;
 using dotnet_core_weather_api.Data.Entities;
 using dotnet_core_weather_api.Models;
 using AutoMapper;
+using dotnet_core_weather_api.Helpers;
 
 namespace dotnet_core_weather_api.Controllers
 {
@@ -26,26 +27,89 @@ namespace dotnet_core_weather_api.Controllers
         }
         
         [HttpGet]
-        public IEnumerable<User> getAllUsers (){
-            return _users.getAllUsers();
+        public IActionResult getAllUsers (){
+            try
+            {
+                return Ok(_users.getAllUsers());
+            }
+            catch (AppException ex)
+            {
+                // return error message if there was an exception
+                return BadRequest(new { message = ex.Message });
+            }
+            
         }
         [HttpPost("create")]
-        public void CreateUser ([FromBody]CreateUser newUser){
-            var user = _mapper.Map<User>(newUser);
-          _users.createUser(user);
+        public IActionResult createUser([FromBody]CreateUser newUser){
+            try
+            {
+                var user = _mapper.Map<User>(newUser);
+                _users.createUser(user);
+                return Ok(user);
+            }
+            catch (AppException ex)
+            {
+                // return error message if there was an exception
+                return BadRequest(new { message = ex.Message });
+            }
+            
         }
-        [HttpPost("delete/{User}")]
-        public void DeleteUser (int ID){
-            _users.deleteUser(ID);
+        [HttpPost("delete/{ID}")]
+        public IActionResult DeleteUser (int ID){
+            try
+            {
+                _users.deleteUser(ID);
+                return Ok("User with ID: " + ID + "has been deleted");
+            }
+            catch (AppException ex)
+            {
+                // return error message if there was an exception
+                return BadRequest(new { message = ex.Message });
+            }
+            
         }
         [HttpPost("update")]
-        public void UpdateUser ([FromBody]User user){
-            _users.UpdateUser(user);
+        public IActionResult UpdateUser ([FromBody]User user){
+            try
+            {
+                _users.UpdateUser(user);
+                return Ok(user);
+            }
+            catch (AppException ex)
+            {
+                // return error message if there was an exception
+                return BadRequest(new { message = ex.Message });
+            }
+            
         }
         [HttpGet("{Id}")]
-        public async Task<User> getUser (int Id){
+        public async Task<IActionResult> getUser (int Id){
+            try
+            {
+                var user = await _users.getUser(Id);
+                return Ok(user);
+            }
+            catch (AppException ex)
+            {
+                // return error message if there was an exception
+                return BadRequest(new { message = ex.Message });
+            }
             
-            return await _users.getUser(Id);
+        }
+        [HttpGet("{Id}/favorites")]
+        public async Task<IActionResult> getUsersFavorites(int Id)
+        {
+            try
+            {
+                var user = await _users.getUsersFavorites(Id);
+                return Ok(user);
+            }
+            catch (AppException ex)
+            {
+                // return error message if there was an exception
+                return BadRequest(new { message = ex.Message });
+            }
+
         }
     }
 }

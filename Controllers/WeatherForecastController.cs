@@ -21,12 +21,13 @@ namespace dotnet_core_weather_api.Controllers
         }
 
         [HttpGet("{city}")]
-        public  async Task<IActionResult> Get(String city)
+        public  async Task<IActionResult> Get(string city)
         {
             var client = new HttpClient();
             var getCurrentWeatherUrl = "http://api.openweathermap.org/data/2.5/weather?q="+city+"&APPID=edd8a536615baec9136dec2c86cdb211";
             try{
                 HttpResponseMessage response = await client.GetAsync(getCurrentWeatherUrl);
+                Console.Write(response.Content.ReadAsStreamAsync().Result);
                 return Ok(response.Content.ReadAsStringAsync().Result);
             }
             catch{
@@ -50,12 +51,13 @@ namespace dotnet_core_weather_api.Controllers
         }
 
         [HttpGet("{city}")]
-        public async Task<IActionResult> Get(String city)
+        public async Task<IActionResult> Get(string city)
         {
             var client = new HttpClient();
             var getWeatherForecastUrl = "http://api.openweathermap.org/data/2.5/forecast?q="+city+"&mode=json&units=imperial&cnt=7&APPID=edd8a536615baec9136dec2c86cdb211";
             try{
                 HttpResponseMessage response = await client.GetAsync(getWeatherForecastUrl);
+                Console.Write(response.Content.ReadAsStreamAsync().Result);
                 return Ok(response.Content.ReadAsStringAsync().Result);
             }
             catch{

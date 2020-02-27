@@ -1,14 +1,18 @@
 ﻿<Properties StartupConfiguration="{27FA5A45-CEBF-4661-B155-607EE5A55B61}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="Models/CreateFavorite.cs">
     <Files>
-      <File FileName="Controllers/UsersController.cs" Line="48" Column="26" />
+      <File FileName="Controllers/UsersController.cs" Line="18" Column="35" />
       <File FileName="Data/Entities/User.cs" />
-      <File FileName="Data/FavoritesRepository.cs" Line="44" Column="14" />
-      <File FileName="Controllers/FavoritesController.cs" Line="77" Column="67" />
+      <File FileName="Data/FavoritesRepository.cs" Line="50" Column="45" />
+      <File FileName="Controllers/FavoritesController.cs" Line="60" Column="1" />
       <File FileName="Data/UsersRepository.cs" />
-      <File FileName="Data/WeatherAppContext.cs" Line="1" Column="1" />
+      <File FileName="Data/WeatherAppContext.cs" Line="30" Column="1" />
       <File FileName="Helpers/AppException.cs" Line="17" Column="10" />
       <File FileName="Models/CreateFavorite.cs" Line="1" Column="1" />
+      <File FileName="Controllers/WeatherForecastController.cs" Line="40" Column="29" />
+      <File FileName="Models/Forecast.cs" Line="1" Column="1" />
+      <File FileName="Models/Weather.cs" Line="11" Column="6" />
+      <File FileName="Models/CreateUser.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -24,6 +28,9 @@
             </Node>
           </Node>
         </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>

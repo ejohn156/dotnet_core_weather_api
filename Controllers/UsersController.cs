@@ -30,7 +30,10 @@ namespace dotnet_core_weather_api.Controllers
         public IActionResult getAllUsers (){
             try
             {
-                return Ok(_users.getAllUsers());
+           
+                var users = _users.getAllUsers();
+                var model = _mapper.Map<IList<GetUser>>(users);
+                return Ok(model);
             }
             catch (AppException ex)
             {

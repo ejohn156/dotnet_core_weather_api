@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{27FA5A45-CEBF-4661-B155-607EE5A55B61}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Data/Entities/User.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Models/getUser.cs">
     <Files>
       <File FileName="Controllers/UsersController.cs" Line="1" Column="1" />
       <File FileName="Controllers/FavoritesController.cs" Line="35" Column="55" />
@@ -7,15 +7,17 @@
       <File FileName="Controllers/WeatherForecastController.cs" Line="1" Column="1" />
       <File FileName="Data/Entities/Favorite.cs" Line="11" Column="23" />
       <File FileName="Data/Entities/User.cs" Line="8" Column="5" />
-      <File FileName="Helpers/AutoMapperProfile.cs" Line="13" Column="45" />
+      <File FileName="Helpers/AutoMapperProfile.cs" Line="15" Column="54" />
       <File FileName="Models/CreateFavorite.cs" Line="11" Column="1" />
-      <File FileName="Data/FavoritesRepository.cs" Line="34" Column="71" />
-      <File FileName="Data/UsersRepository.cs" Line="66" Column="52" />
+      <File FileName="Data/FavoritesRepository.cs" Line="30" Column="10" />
+      <File FileName="Data/UsersRepository.cs" Line="32" Column="43" />
       <File FileName="Data/WeatherAppContext.cs" Line="27" Column="45" />
-      <File FileName="Models/GetFavorite.cs" Line="10" Column="45" />
+      <File FileName="Models/GetFavorite.cs" Line="9" Column="13" />
       <File FileName="Models/CreateUser.cs" Line="1" Column="1" />
       <File FileName="Startup.cs" Line="42" Column="14" />
-      <File FileName="Models/FavoriteUserReference.cs" Line="6" Column="9" />
+      <File FileName="Models/FavoriteUserReference.cs" Line="9" Column="42" />
+      <File FileName="Models/UserFavoriteReference.cs" Line="8" Column="41" />
+      <File FileName="Models/getUser.cs" Line="6" Column="9" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -24,12 +26,12 @@
             <Node name="dotnet_core_weather_api" expanded="True">
               <Node name="Controllers" expanded="True" />
               <Node name="Data" expanded="True">
-                <Node name="Entities" expanded="True">
-                  <Node name="User.cs" selected="True" />
-                </Node>
+                <Node name="Entities" expanded="True" />
               </Node>
               <Node name="Helpers" expanded="True" />
-              <Node name="Models" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="getUser.cs" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>

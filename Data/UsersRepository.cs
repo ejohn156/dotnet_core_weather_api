@@ -13,7 +13,7 @@ namespace dotnet_core_weather_api.Data
     {
         void createUser(User newUser);
         void deleteUser(int ID);
-        IEnumerable<User> getAllUsers();
+        IQueryable<User> getAllUsers();
         Task<User> getUser(int ID);
         bool SaveAll();
         bool SaveChanges();
@@ -32,10 +32,9 @@ namespace dotnet_core_weather_api.Data
             _favoriteContext = appContext;
         }
 
-        public IEnumerable<User> getAllUsers()
+        public IQueryable<User> getAllUsers()
         {
-            return _userContext.Users.OrderBy(p => p.Email)
-            .ToList();
+            return _userContext.Users.Include(s => s.Favorites).OrderBy(p => p.Email);
         }
 
         public async Task<User> getUser(int ID)

@@ -32,12 +32,6 @@ namespace dotnet_core_weather_api.Data
         public IQueryable<Favorite> getAllfavorites()
         {
             var favorites = _favorites.Favorites.Include(f => f.User);
-            var json = JsonConvert.SerializeObject(favorites, new JsonSerializerSettings
-            {
-                Formatting = Formatting.Indented,
-                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-            });
-            Console.WriteLine(json);
             return favorites;
         }
 

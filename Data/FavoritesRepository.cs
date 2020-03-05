@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using dotnet_core_weather_api.Data.Entities;
 using dotnet_core_weather_api.Data;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace dotnet_core_weather_api.Data
 {
@@ -13,7 +14,7 @@ namespace dotnet_core_weather_api.Data
     {
         void createFavorite(Favorite newFavorite);
         void deleteFavorite(int ID);
-        IEnumerable<Favorite> getAllfavorites();
+        IQueryable<Favorite> getAllfavorites();
         List<int> getUsersWhoFavoritedCity(string city);
         bool SaveAll();
         bool SaveChanges();
@@ -28,10 +29,16 @@ namespace dotnet_core_weather_api.Data
             _favorites = appContext;
         }
 
-        public IEnumerable<Favorite> getAllfavorites()
+        public IQueryable<Favorite> getAllfavorites()
         {
-            return _favorites.Favorites.OrderBy(p => p.User)
-            .ToList();
+            var favorites = _favorites.Favorites.Include(f => f.User);
+            var json = JsonConvert.SerializeObject(favorites, new JsonSerializerSettings
+            {
+                Formatting = Formatting.Indented,
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            });
+            Console.WriteLine(json);
+            return favorites;
         }
 
         public List<int> getUsersWhoFavoritedCity(string city)
@@ -40,13 +47,13 @@ namespace dotnet_core_weather_api.Data
             var result = _favorites.Favorites.Where(I => I.City == city).ToList();
             foreach (Favorite fav in result)
             {
-                ListOfUsers.Add(fav.UserID);
+                ListOfUsers.Add(fav.User.ID);
             }
             return ListOfUsers;
         }
         public void createFavorite(Favorite newFavorite)
         {
-            var existingFavorites = _favorites.Favorites.Where(I => I.UserID == newFavorite.UserID).Where(I => I.City.Equals(newFavorite.City)).ToArray();
+            var existingFavorites = _favorites.Favorites.Where(I => I.UserId == newFavorite.UserId).Where(I => I.City.Equals(newFavorite.City)).ToArray();
             if (existingFavorites.Length == 0)
             {
                 _favorites.Favorites.Add(newFavorite);

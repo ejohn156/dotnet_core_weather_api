@@ -1,7 +1,6 @@
 /Users/ericjohnson/Desktop/personal_projects/dotnet_core_weather_api/bin/Debug/netcoreapp3.1/appsettings.Development.json
 /Users/ericjohnson/Desktop/personal_projects/dotnet_core_weather_api/bin/Debug/netcoreapp3.1/appsettings.json
 /Users/ericjohnson/Desktop/personal_projects/dotnet_core_weather_api/bin/Debug/netcoreapp3.1/Properties/launchSettings.json
-/Users/ericjohnson/Desktop/personal_projects/dotnet_core_weather_api/bin/Debug/netcoreapp3.1/dotnet_core_weather_api
 /Users/ericjohnson/Desktop/personal_projects/dotnet_core_weather_api/bin/Debug/netcoreapp3.1/dotnet_core_weather_api.deps.json
 /Users/ericjohnson/Desktop/personal_projects/dotnet_core_weather_api/bin/Debug/netcoreapp3.1/dotnet_core_weather_api.runtimeconfig.json
 /Users/ericjohnson/Desktop/personal_projects/dotnet_core_weather_api/bin/Debug/netcoreapp3.1/dotnet_core_weather_api.runtimeconfig.dev.json
@@ -39,3 +38,6 @@
 /Users/ericjohnson/Desktop/personal_projects/dotnet_core_weather_api/bin/Debug/netcoreapp3.1/Npgsql.EntityFrameworkCore.PostgreSQL.dll
 /Users/ericjohnson/Desktop/personal_projects/dotnet_core_weather_api/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.Design.dll
 /Users/ericjohnson/Desktop/personal_projects/dotnet_core_weather_api/bin/Debug/netcoreapp3.1/AutoMapper.dll
+/Users/ericjohnson/Desktop/personal_projects/dotnet_core_weather_api/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.JsonPatch.dll
+/Users/ericjohnson/Desktop/personal_projects/dotnet_core_weather_api/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+/Users/ericjohnson/Desktop/personal_projects/dotnet_core_weather_api/bin/Debug/netcoreapp3.1/Newtonsoft.Json.Bson.dll

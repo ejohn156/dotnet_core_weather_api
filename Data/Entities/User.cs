@@ -9,6 +9,6 @@ namespace dotnet_core_weather_api.Data.Entities
     public string Email { get; set; }
     public string Password { get; set; }
     public string Phone { get; set; }
-    public IEnumerable<Favorite> Favorites {get; set;}
+    public ICollection<Favorite> Favorites {get; set;}
   }
 }

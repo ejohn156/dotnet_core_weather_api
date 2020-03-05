@@ -7,9 +7,10 @@ namespace dotnet_core_weather_api.Data.Entities
   {
     public int ID {get; set;}
     public string City { get; set; }
+        
+    public int UserId { get; set; }
         [ForeignKey("UserId")]
-    public int UserID { get; set; }
-    public User User { get; set; }
+        public User User { get; set; }
 
     }
 }

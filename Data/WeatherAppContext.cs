@@ -23,10 +23,14 @@ namespace dotnet_core_weather_api.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Favorite>()
-                .HasOne(s => s.User);
+                .HasOne(s => s.User)
+                .WithMany(s => s.Favorites);
+                
+                
 
             modelBuilder.Entity<User>()
-                .HasMany(s => s.Favorites);
+                .HasMany(s => s.Favorites)
+                .WithOne(s => s.User);
         }
     }
     

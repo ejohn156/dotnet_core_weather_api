@@ -18,6 +18,8 @@ using System.Net.Http;
 using dotnet_core_weather_api.Data;
 using AutoMapper;
 using dotnet_core_weather_api.Helpers;
+using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
+using Newtonsoft.Json;
 
 namespace dotnet_core_weather_api
 {
@@ -44,7 +46,10 @@ namespace dotnet_core_weather_api
             IMapper mapper = mappingConfig.CreateMapper();
             services.AddSingleton(mapper);
 
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options =>
+            {
+                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            }); ;
             services.AddDbContext<dotnet_core_weather_api.Data.WeatherAppContext>(cfg => { cfg.UseNpgsql(_config.GetConnectionString("WeatherAppConnectionString")); });
             services.AddHttpClient();
             services.AddScoped<IFavoritesRepository, favoritesRepository>();

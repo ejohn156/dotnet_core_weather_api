@@ -31,7 +31,9 @@ namespace dotnet_core_weather_api.Controllers
         public IActionResult GetAllFavorites (){
             try
             {
-                return Ok(_favorites.getAllfavorites().ToArray());
+                var favorites = _favorites.getAllfavorites();
+                var model = _mapper.Map<IList<GetFavorite>>(favorites);
+                return Ok(model);
             }
             catch (AppException ex)
             {

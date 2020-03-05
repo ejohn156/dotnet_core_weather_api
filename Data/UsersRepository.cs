@@ -67,7 +67,7 @@ namespace dotnet_core_weather_api.Data
             _userContext.SaveChanges();
         }
         public async Task<IEnumerable<Favorite>> getUsersFavorites(int ID){
-            var listOfFavorites = await _favoriteContext.Favorites.Where(I => I.UserID == ID).ToListAsync();
+            var listOfFavorites = await _favoriteContext.Favorites.Where(I => I.User.ID == ID).ToListAsync();
             return listOfFavorites;
         }
         public bool SaveAll()

@@ -100,12 +100,13 @@ namespace dotnet_core_weather_api.Controllers
             
         }
         [HttpGet("{Id}/favorites")]
-        public async Task<IActionResult> getUsersFavorites(int Id)
+        public IActionResult getUsersFavorites(int Id)
         {
             try
             {
-                var user = await _users.getUsersFavorites(Id);
-                return Ok(user);
+                var user =  _users.getUsersFavorites(Id).ToList();
+                var model = _mapper.Map<IList<RequestGetUsersFavorites>>(user);
+                return Ok(model);
             }
             catch (AppException ex)
             {

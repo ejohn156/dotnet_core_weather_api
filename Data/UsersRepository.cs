@@ -18,7 +18,7 @@ namespace dotnet_core_weather_api.Data
         bool SaveAll();
         bool SaveChanges();
         void UpdateUser(User updatedUser);
-        Task<IEnumerable<Favorite>> getUsersFavorites(int ID);
+       IQueryable<Favorite> getUsersFavorites(int ID);
     }
 
     public class UsersRepository : IUsersRepository
@@ -40,7 +40,7 @@ namespace dotnet_core_weather_api.Data
         public async Task<User> getUser(int ID)
         {
 
-            var result = await _userContext.Users.Where(I => I.ID == ID).ToListAsync();
+            var result = await _userContext.Users.Include(s => s.Favorites).Where(I => I.ID == ID).ToListAsync();
             return result.First();
         }
         public void createUser(User newUser)
@@ -65,8 +65,8 @@ namespace dotnet_core_weather_api.Data
             userToUpdate.Phone = updatedUser.Phone;
             _userContext.SaveChanges();
         }
-        public async Task<IEnumerable<Favorite>> getUsersFavorites(int ID){
-            var listOfFavorites = await _favoriteContext.Favorites.Where(I => I.User.ID == ID).ToListAsync();
+        public IQueryable<Favorite> getUsersFavorites(int ID){
+            var listOfFavorites = _favoriteContext.Favorites.Where(I => I.User.ID == ID);
             return listOfFavorites;
         }
         public bool SaveAll()

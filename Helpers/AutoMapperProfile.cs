@@ -14,6 +14,7 @@ namespace dotnet_core_weather_api.Helpers
             CreateMap<Favorite, GetFavorite > ();
             CreateMap<Favorite, UserFavoriteReference>();
             CreateMap<User, GetUser>();
+            CreateMap<Favorite, RequestGetUsersFavorites>();
         }
 
     }
